@@ -1,13 +1,13 @@
 ---
 title: "Reusable snippets"
-description: "Write once, reuse everywhere — keep content in sync across pages"
+description: "Write once, reuse everywhere. Use snippets to keep content in sync across pages"
 icon: "recycle"
 ---
 
 Any content you find yourself repeating across pages is a good candidate for a snippet. Create the file once in the `snippets/` directory, import it wherever you need it, and updates propagate everywhere automatically.
 
 <Note>
-  Files inside `snippets/` are not rendered as standalone pages — they only appear where imported.
+  Files inside `snippets/` are not rendered as standalone pages. They only appear where you import them.
 </Note>
 
 ## Content snippets
@@ -73,6 +73,10 @@ export const EndpointNote = ({ method, path }) => (
 );
 ```
 
+* Use arrow function syntax (`const Foo = () => ...`).
+* The `function` keyword is not supported in snippet files.
+* MDX syntax doesn't compile inside arrow function bodies. Use plain HTML tags there, or use a default export instead.
+
 Pass props when you render it:
 
 ```mdx your-page.mdx
@@ -80,10 +84,6 @@ import { EndpointNote } from '/snippets/endpoint-note.mdx';
 
 <EndpointNote method="POST" path="/v1/users" />
 ```
-
-<Warning>
-  Use arrow function syntax (`const Foo = () => ...`). The `function` keyword is not supported in snippet files. Also, MDX syntax (like Mintlify components) doesn't compile inside arrow function bodies — use plain HTML tags there, or use a default export instead.
-</Warning>
 
 ## Snippets importing snippets
 
